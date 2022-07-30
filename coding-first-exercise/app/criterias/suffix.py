@@ -40,7 +40,7 @@ class Suffix(Criteria):
     def matches(self, file: File) -> bool:
         """
         Checks if the file with name equal to filename has this suffix
-        :param filename: name of the file
+        :param file: file object to be tested in the criteria
         :return:
         """
         return file.filename.endswith(self._value)

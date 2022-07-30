@@ -1,6 +1,7 @@
 import argparse
 from enum import Enum, unique
 
+
 class Parser:
     """
     A class used to encapsulate all the methods of the CLI parser in different versions
@@ -12,6 +13,7 @@ class Parser:
         parser.add_argument('suffix', type=str, help="Suffix of the file name to be found. Example: *.log")
         parser.add_argument('path', type=str, help="Path of the file system. Example: /var/tmp")
         return parser
+
 
 @unique
 class ParserVersion(Enum):

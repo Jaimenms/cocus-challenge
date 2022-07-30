@@ -23,6 +23,7 @@ class NotFoundPathException(PathException):
     def __str__(self):
         return f"The path \"{self.p}\" was not found in the filesystem"
 
+
 class NotAPathException(PathException):
 
     def __str__(self):
