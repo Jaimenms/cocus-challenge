@@ -1,6 +1,7 @@
 from .fruit_queue import FruitQueue
 
-class AtTreeState(FruitQueue):
+
+class AtTreeQueue(FruitQueue):
 
     name = "Tree"
     unit = "fruits"

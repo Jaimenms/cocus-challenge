@@ -12,7 +12,7 @@ class Worker:
     MIN_DURATION = .1
     MAX_DURATION = 1
 
-    def __init__(self,identifier: int = 0):
+    def __init__(self, identifier: int = 0):
         self.identifier = identifier
         self.quantity = 0
 

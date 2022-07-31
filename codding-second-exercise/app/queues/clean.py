@@ -1,6 +1,6 @@
 from .fruit_queue import FruitQueue
 
 
-class CleanState(FruitQueue):
+class CleanQueue(FruitQueue):
 
     name = "Clean Basket"

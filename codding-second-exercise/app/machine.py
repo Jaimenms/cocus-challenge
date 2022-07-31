@@ -1,15 +1,17 @@
+import os
 import uuid
 import logging
 
 from typing import List
 from threading import Timer, Thread
-import threading
 
-from .operators.operator import Operator
+from app.workers.worker import Worker
+from app.queues.fruit_queue import FruitQueue
+
+LOGS_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 FORMAT = "%(asctime)s %(message)s"
-logging.basicConfig(filename='logfile.log', level=logging.DEBUG, format=FORMAT, datefmt="%Y-%m-%d %H:%M:%S")
-
+logging.basicConfig(filename=os.path.join(LOGS_FOLDER, 'logfile.log'), level=logging.DEBUG, format=FORMAT, datefmt="%Y-%m-%d %H:%M:%S")
 
 
 class RepeatTimer(Timer):
@@ -17,30 +19,28 @@ class RepeatTimer(Timer):
         while not self.finished.wait(self.interval):
             self.function(*self.args, **self.kwargs)
 
+
 class Machine:
 
-    def __init__(self, operators: List[Operator]):
-        self.queues = []
+    def __init__(self, from_queue: FruitQueue):
+        self.queues = [from_queue]
         self.threads = []
         self.workers = []
-        for operator in operators:
-            self.add_operator(operator)
-            self.queues.append(operator.from_queue)
-            self.workers += operator.workers
-        self.queues.append(operators[-1].to_queue)
 
-        self.initial_queue = operators[0].from_queue
-        self.final_queue = operators[-1].to_queue
-
-    def add_operator(self, operator: Operator):
-        for worker in operator.workers:
-            t = Thread(target=worker.run, args=(operator.from_queue, operator.to_queue))
+    def add(self, workers: List[Worker], to_queue: FruitQueue):
+        for worker in workers:
+            from_queue = self.queues[-1]
+            t = Thread(target=worker.run, args=(from_queue, to_queue))
             self.threads.append(t)
+            self.queues.append(to_queue)
+        self.workers += workers
+        return self
 
     def feed(self, n: int):
         for _ in range(n):
             item = uuid.uuid4().hex
-            self.initial_queue.put(item)
+            self.queues[0].put(item)
+        return self
 
     def log(self):
         logging.info(self)
@@ -63,7 +63,6 @@ class Machine:
 
         timer.cancel()
         self.log()
-
 
     def __str__(self):
         queues_ctt = [str(queue) for queue in self.queues]
