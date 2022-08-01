@@ -1,6 +1,9 @@
-from .fruit_queue import FruitQueue
+from .modified_queue import ModifiedQueue
 
 
-class CleanQueue(FruitQueue):
+class CleanQueue(ModifiedQueue):
+    """
+    A class that represents the Clean Fruit Basket
+    """
 
     name = "Clean Basket"

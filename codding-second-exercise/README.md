@@ -1,10 +1,21 @@
-# DeepList
-List of paths and file names that match a certain suffix
+# Farming Simulator
+Executes the farming simulator
 
-This project corresponds to the first coding exercise of Cocus Challenge.
+This project corresponds to the second coding exercise of Cocus Challenge.
 
-Find all files within a path, with a given file name suffix. Note that a path may contain further subdirectories and 
-those subdirectories may also contain further subdirectories. There is no limit to the depth of the subdirectories.
+In this exercise we will be testing your multithreading skills.
+
+Suppose that you want to simulate a fruit farm:
+* Three farmers are collecting fruits from a single tree to a single dirty fruit basket.
+* In parallel, three other farmers are getting the fruits from the dirty fruit basket, cleaning them, and pushing them into the single cleaned fruit basket.
+* All the farmers are managing the fruit individually
+* The tree has 50 fruits (and only one farmer at one time can pick fruit from the tree)
+* Time to collect fruits from the trees into the basket: random(3,6) seconds
+* Time to clean the fruits into the cleaned fruit basket: random(2,4) seconds
+* The simulation ends when all the fruits from the tree are collected and cleaned.
+* The number of fruits in the tree and in the baskets must be logged every second.
+
+![Farming Diagram](./docs/images/farming_diagram.png)
 
 # Quick Start
 
@@ -12,7 +23,7 @@ those subdirectories may also contain further subdirectories. There is no limit 
 
 Clone this respository and run the following command:
 
-```basg
+```bash
 pip install -r requirements.txt
 ```
 
@@ -21,19 +32,13 @@ pip install -r requirements.txt
 Example 1: List all paths and file names inside _/var/tmp_ that have the suffix _.log_.
 
 ```bash
-./deep_list.py \*.log /var/tmp/
-```
-
-Or:
-
-```bash
-./deep_list.py "*.log" "/var/tmp/"
+./farming_simulator.py
 ```
 
 For more details about the syntax, please run:
 
 ```bash
-deep_list.py --help
+farming_simulator.py --help
 ```
 
 ## Test

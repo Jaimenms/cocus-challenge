@@ -1,7 +1,10 @@
-from .fruit_queue import FruitQueue
+from .modified_queue import ModifiedQueue
 
 
-class AtTreeQueue(FruitQueue):
+class AtTreeQueue(ModifiedQueue):
+    """
+    A class that represents the Tree
+    """
 
     name = "Tree"
     unit = "fruits"
