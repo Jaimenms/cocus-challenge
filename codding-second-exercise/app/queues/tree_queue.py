@@ -1,7 +1,7 @@
-from .modified_queue import ModifiedQueue
+from .farming_queue import FarmingQueue
 
 
-class AtTreeQueue(ModifiedQueue):
+class AtTreeQueue(FarmingQueue):
     """
     A class that represents the Tree
     """

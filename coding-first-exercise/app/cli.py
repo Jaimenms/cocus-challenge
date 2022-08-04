@@ -1,4 +1,5 @@
 import argparse
+import sys
 from enum import Enum, unique
 
 
@@ -45,10 +46,14 @@ class Cli:
         """
         self.parser = parser_version.value
 
-    def parse(self, args):
+    def parse(self, args=None):
         """
         Receives the list of arguments inserted via CLI, interprets if and return the parsed arguments
-        :param args:
+        :param:
         :return:
         """
+
+        if args is None:
+            args = sys.argv[1:]
+
         return self.parser.parse_args(args)

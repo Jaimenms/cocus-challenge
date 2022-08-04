@@ -1,15 +1,4 @@
-from threading import Timer
 import uuid
-
-
-class RepeatTimer(Timer):
-    """
-    A class to creat a repeat timer
-    """
-    def run(self):
-        while not self.finished.wait(self.interval):
-            self.function(*self.args, **self.kwargs)
-
 
 def list_to_string(elements: list, separator: str = " - "):
     """

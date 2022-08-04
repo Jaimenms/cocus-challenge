@@ -1,8 +1,8 @@
-"""Queue package"""
+"""Queues package"""
 
-from .at_tree import AtTreeQueue
-from .clean import CleanQueue
-from .dirty import DirtyQueue
+from .tree_queue import AtTreeQueue
+from .clean_queue import CleanQueue
+from .dirty_queue import DirtyQueue
 
 # A map to indentify all the available queues
 _QUEUES = {

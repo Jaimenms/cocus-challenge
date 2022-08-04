@@ -1,7 +1,7 @@
 """Workers package"""
 
-from .cleaner import CleanerWorker
-from .picker import PickerWorker
+from .cleaner_worker import CleanerWorker
+from .picker_worker import PickerWorker
 
 # A map to indentify all the available workers
 _WORKERS = {
