@@ -1,6 +1,6 @@
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
 
-# Farming Simulator
+# Exercise 2 - Coding - Farming Simulator
 Executes the farming simulator
 
 This project corresponds to the second coding exercise of Cocus Challenge.
