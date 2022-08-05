@@ -23,7 +23,7 @@ Suppose that you want to simulate a fruit farm:
 
 ## Install
 
-Clone this respository and run the following command:
+Clone this repository and run the following command:
 
 ```bash
 pip install -r requirements.txt
